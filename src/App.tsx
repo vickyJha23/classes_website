@@ -1,7 +1,22 @@
-import { useEffect, useState } from 'react'
-import logo from './assets/logo.jpg'
+import { useEffect, useRef, useState } from 'react'
+import logo from './assets/logo.png'
 import cadets from './assets/cadets.jpg'
 import student from './assets/student.jpg'
+import mahtoSir from './assets/people/mahto-sir.jpg'
+import group2024 from './assets/people/group-2024.jpg'
+import anshika from './assets/people/anshika-tiwari.jpg'
+import aditya from './assets/people/aditya-jaiswar.jpg'
+import ruchika from './assets/people/ruchika-chaudhari.jpg'
+import sanskruti from './assets/people/sanskruti-urkude.jpg'
+import nitesh from './assets/people/nitesh-upadhyay.jpg'
+import shivangi from './assets/people/shivangi-jaiswar.jpg'
+import amit from './assets/people/amit-prajapati.jpg'
+import rishit from './assets/people/rishit-paswan.jpg'
+import singhKaran from './assets/people/singh-karan.jpg'
+import ashutosh from './assets/people/ashutosh-yadav.jpg'
+import aryan from './assets/people/aryan-raj.jpg'
+import kartik from './assets/people/kartik-dubey.jpg'
+import krishna from './assets/people/krishna-jadhav.jpg'
 import './App.css'
 
 /* ------------------------------------------------------------------ */
@@ -16,13 +31,14 @@ const ADDRESS =
 const MAP_URL =
   'https://www.google.com/maps/search/?api=1&query=Premaldeep+Square+Kilvani+Naka+Silvassa+396230'
 const RMS_APPLY_URL = 'https://exams.nta.nic.in/rmscet/'
+const EMAIL = 'edupointclass@gmail.com'
 
 const NAV = [
   { href: '#about', label: 'About Us' },
   { href: '#courses', label: 'Courses' },
   { href: '#results', label: 'Results' },
   { href: '#rms-cet', label: 'RMS CET 2026' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '#scholarship', label: 'Scholarship' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -46,17 +62,40 @@ const COURSES = [
     points: [
       'Navodaya (JNVST)',
       'Sainik School Entrance Exam',
+      'Kendriya Vidyalaya admission guidance',
       'RMS CET (Rashtriya Military Schools)',
       'Railway exams',
       'Other scholarship & competitive exams',
     ],
   },
+  {
+    title: 'Diploma Engineering',
+    level: 'Diploma students',
+    text: 'Subject coaching for diploma engineering students, with clear explanations, regular practice and exam-focused revision.',
+    points: ['Subject-wise coaching', 'Exam-focused revision', 'Regular tests', 'Doubt-solving sessions'],
+  },
 ]
 
-const PHILOSOPHY = [
-  { title: 'Understand, don’t memorise', text: 'Every topic starts from the basics, so students know why an answer is right.' },
-  { title: 'Practice and test', text: 'Regular tests and performance analysis show each student where they stand.' },
-  { title: 'Grow beyond academics', text: 'Confidence, discipline and soft skills matter as much as marks.' },
+const VALUES = [
+  {
+    title: 'Our vision',
+    text: 'To empower students to excel academically and grow personally, in a learning environment where they explore their passions, develop their talents and reach their potential.',
+  },
+  {
+    title: 'Our mission',
+    text: 'To prepare students for leadership and service, with a learning environment that is engaging, upholds high academic standards and builds a genuine passion for learning.',
+  },
+  {
+    title: 'Our approach',
+    text: 'We blend structured lessons with creative, engaging activities, so learning is both enjoyable and effective, and students grow academically, artistically and socially.',
+  },
+]
+
+const STATS = [
+  { value: '2020', label: 'Founded in Silvassa' },
+  { value: '98.22', unit: '%ile', label: 'Top Class 10th score, 2025' },
+  { value: '100', unit: '/100', label: 'Maths score by our topper, 2025' },
+  { value: 'JNV', unit: '& Sainik', label: 'Selections from our entrance batch' },
 ]
 
 const WHY_US = [
@@ -90,6 +129,10 @@ const FAQS = [
     a: 'Applications are open from 23 September to 20 October 2026 on the official NTA website, and the exam is on 13 December 2026.',
   },
   {
+    q: 'How do I apply for the scholarship test?',
+    a: `Tap "Apply now" in the Scholarship Test section or WhatsApp us on ${PHONE_DISPLAY}. We will share the test date and details with you.`,
+  },
+  {
     q: 'Can I attend a free demo class?',
     a: `Yes. You can attend a free demo class before taking admission. Call or WhatsApp us on ${PHONE_DISPLAY} to book one.`,
   },
@@ -99,16 +142,43 @@ const FAQS = [
   },
 ]
 
-// Class 10th, 2024 batch, as shown on our results poster
-const RESULTS = [
-  { name: 'Amit Prajapati', score: '92.22%', maths: '95/100' },
-  { name: 'Rishit Paswan', score: '90.40%', maths: '92/100' },
-  { name: 'Singh Karan', score: '88.66%', maths: '96/100' },
-  { name: 'Priyanshu Singh', score: '81.35%' },
-  { name: 'Suraj Prasad', score: '80.30%' },
-  { name: 'Annu Singh', score: '78.97%' },
-  { name: 'Pratik Mahajan', score: '78.69%' },
-  { name: 'Chaitanya Sonavane', score: '77.29%' },
+type Topper = {
+  name: string
+  photo?: string
+  score: string
+  scoreNote: string
+  maths?: number
+  science?: number
+}
+
+// Class 10th toppers, 2025
+const TOPPERS_2025: Topper[] = [
+  { name: 'Anshika Tiwari', photo: anshika, score: '98.22', scoreNote: 'percentile', maths: 95, science: 97 },
+  { name: 'Aditya Jaiswar', photo: aditya, score: '97.14', scoreNote: 'percentile', maths: 100, science: 99 },
+  { name: 'Ruchika Chaudhari', photo: ruchika, score: '95.79', scoreNote: 'percentile' },
+  { name: 'Sanskruti Urkude', photo: sanskruti, score: '95.49', scoreNote: 'percentile', maths: 92, science: 97 },
+  { name: 'Nitesh Upadhyay', photo: nitesh, score: '95%', scoreNote: 'CBSE', maths: 98, science: 95 },
+  { name: 'Shivangi Jaiswar', photo: shivangi, score: '88.44', scoreNote: 'percentile' },
+]
+
+// Class 10th toppers, 2024
+const TOPPERS_2024: Topper[] = [
+  { name: 'Amit Prajapati', photo: amit, score: '92.22', scoreNote: 'percentile', maths: 95 },
+  { name: 'Rishit Paswan', photo: rishit, score: '90.40%', scoreNote: 'overall', maths: 92 },
+  { name: 'Singh Karan', photo: singhKaran, score: '88.66%', scoreNote: 'overall', maths: 96 },
+  { name: 'Priyanshu Singh', score: '81.35', scoreNote: 'percentile' },
+  { name: 'Suraj Prasad', score: '80.30', scoreNote: 'percentile' },
+  { name: 'Annu Singh', score: '78.97', scoreNote: 'percentile' },
+  { name: 'Pratik Mahajan', score: '78.69', scoreNote: 'percentile' },
+  { name: 'Chaitanya Sonavane', score: '77.29', scoreNote: 'percentile' },
+]
+
+// Students selected in Jawahar Navodaya Vidyalaya & Sainik School
+const SELECTIONS = [
+  { name: 'Ashutosh Yadav', photo: ashutosh },
+  { name: 'Aryan Raj', photo: aryan },
+  { name: 'Kartik Dubey', photo: kartik },
+  { name: 'Krishna Jadhav', photo: krishna },
 ]
 
 const COMMERCE_REASONS = ['Result-oriented teaching', 'Experienced teachers', 'Regular tests', 'Personal attention']
@@ -134,6 +204,8 @@ const COURSE_ICONS = [
   'M4 20h16M7 16v-4M11 16V9M15 16v-6M19 16V6',
   // Entrance exams: target
   'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-4a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
+  // Diploma engineering: gear
+  'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm7.4-1.6.1-1.4-.1-1.4 2-1.6-2-3.4-2.4 1a7 7 0 0 0-2.4-1.4L14.2 2h-4.4l-.4 2.6A7 7 0 0 0 7 6L4.6 5l-2 3.4 2 1.6-.1 1.4.1 1.4-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2.4 1.4l.4 2.6h4.4l.4-2.6a7 7 0 0 0 2.4-1.4l2.4 1 2-3.4-2-1.6Z',
 ]
 
 function courseId(title: string) {
@@ -213,7 +285,7 @@ function Header() {
     <header className="header">
       <div className="wrap header-row">
         <a href="#top" className="brand" onClick={() => setOpen(false)}>
-          <img src={logo} alt="" width={46} height={46} />
+          <img src={logo} alt="Education Point Classes logo" width={50} height={55} />
           <span>
             <strong>Education Point Classes</strong>
             <small>Your Success Is Our Mission</small>
@@ -285,13 +357,63 @@ function Header() {
   )
 }
 
+function HeroVideo() {
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    // React doesn't write `muted` into the HTML, and browsers only autoplay muted videos,
+    // so set it directly before asking the video to play.
+    video.muted = true
+    video.defaultMuted = true
+    video.setAttribute('muted', '')
+    const play = () => {
+      video.play().catch(() => {})
+    }
+    play()
+
+    // Some browsers (e.g. phones in data-saver mode) still block autoplay until the
+    // visitor first touches or scrolls the page, so try again then.
+    const events = ['pointerdown', 'touchstart', 'scroll', 'keydown'] as const
+    const stopListening = () => events.forEach((e) => window.removeEventListener(e, onInteract))
+    const onInteract = () => {
+      play()
+      stopListening()
+    }
+    events.forEach((e) => window.addEventListener(e, onInteract, { passive: true }))
+    const onVisible = () => {
+      if (!document.hidden) play()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => {
+      stopListening()
+      document.removeEventListener('visibilitychange', onVisible)
+    }
+  }, [])
+
+  return (
+    <video
+      ref={ref}
+      className="hero-video"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster="/hero-poster.jpg"
+      aria-hidden
+    >
+      <source src="/hero-video.mp4" type="video/mp4" />
+    </video>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero" id="top">
       {/* Background video: "Classroom with children raising their hands" from mixkit.co (free licence) */}
-      <video className="hero-video" autoPlay muted loop playsInline poster="/hero-poster.jpg" aria-hidden>
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+      <HeroVideo />
       <div className="hero-overlay" aria-hidden />
       <div className="hero-bg" aria-hidden />
       <div className="wrap hero-grid">
@@ -354,49 +476,69 @@ function Hero() {
   )
 }
 
+function Stats() {
+  return (
+    <section className="stats" aria-label="Highlights">
+      <div className="wrap">
+        <div className="stats-grid">
+        {STATS.map((st) => (
+          <div className="stat" key={st.label}>
+            <p className="stat-value">
+              {st.value}
+              {st.unit && <span>{st.unit}</span>}
+            </p>
+            <p className="stat-label">{st.label}</p>
+          </div>
+        ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function About() {
   return (
     <section className="section" id="about">
       <div className="wrap">
-        <div className="about-grid">
-          <div>
-            <p className="eyebrow">About us</p>
-            <h2>Education Point Classes</h2>
-            <p>
-              Education Point Classes is a coaching institute at Kilvani Naka, Silvassa, for students
-              of Class 5th to 12th from CBSE and State Board schools. We teach all subjects from the
-              foundation level, run the Commerce stream for Class 11th and 12th, and prepare students
-              for Navodaya (JNVST), Sainik School, RMS CET, Railway and other scholarship exams.
-            </p>
-            <p>
-              Our aim is simple and written on our logo: <b>Your Success Is Our Mission.</b> We
-              give every student personal attention, test them regularly and make sure no doubt is
-              left unanswered.
-            </p>
-          </div>
-
-          <div className="mentor">
-            <img src={logo} alt="" width={96} height={96} />
-            <div>
-              <p className="eyebrow">Our mentor</p>
-              <h3>Mahto Sir</h3>
-              <p>
-                Education Point Classes is run under the guidance of Mahto Sir, who teaches and
-                mentors students personally and shares lessons and updates on YouTube, Instagram
-                and Telegram as <b>Mahto Sir</b>.
-              </p>
+        <div className="welcome">
+          <figure className="welcome-photo">
+            <div className="welcome-frame">
+              <img src={mahtoSir} alt="Mahto Sir" width={760} height={1004} loading="lazy" />
             </div>
+            <figcaption>
+              <b>Mahto Sir</b>
+              <span>Mentor, Education Point Classes</span>
+            </figcaption>
+          </figure>
+
+          <div className="welcome-text">
+            <p className="eyebrow">Welcome message</p>
+            <h2>
+              Committed to excellence <span className="accent-text">since 2020.</span>
+            </h2>
+            <p>
+              Founded in 2020, Education Point Classes is committed to both academic excellence and
+              holistic student development. We offer Foundation Courses, Board exam preparation,
+              Commerce, Diploma Engineering subjects and entrance coaching, with guidance for
+              prestigious institutions such as <b>Kendriya Vidyalaya</b>, <b>Navodaya Vidyalaya</b>{' '}
+              and <b>Sainik School</b>.
+            </p>
+            <p>
+              We emphasise intellectual growth, discipline and social responsibility. Our goal is to
+              shape students who are ready to make meaningful contributions to their communities and
+              thrive in whatever they choose next.
+            </p>
+            <p className="signature">— Mahto Sir</p>
           </div>
         </div>
 
-        <h3 className="sub-title">Our philosophy</h3>
-        <div className="cards three">
-          {PHILOSOPHY.map((p, i) => (
-            <div className="card" key={p.title}>
-              <span className="num">0{i + 1}</span>
-              <h4>{p.title}</h4>
-              <p>{p.text}</p>
-            </div>
+        <div className="values">
+          {VALUES.map((v, i) => (
+            <article className="value" key={v.title}>
+              <span className="value-num">0{i + 1}</span>
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </article>
           ))}
         </div>
       </div>
@@ -408,9 +550,9 @@ function Courses() {
   return (
     <section className="section alt" id="courses">
       <div className="wrap">
-        <p className="eyebrow">Courses</p>
-        <h2>Our courses</h2>
-        <div className="cards three">
+        <p className="eyebrow">What we offer</p>
+        <h2>Programmes for every stage</h2>
+        <div className="cards two">
           {COURSES.map((c) => (
             <article className="card course" key={c.title} id={courseId(c.title)}>
               <p className="level">{c.level}</p>
@@ -469,26 +611,140 @@ function CommerceBanner() {
   )
 }
 
+function TopperCard({ t, rank }: { t: Topper; rank: number }) {
+  return (
+    <article className="topper">
+      <div className="topper-photo">
+        {t.photo ? (
+          <img src={t.photo} alt={t.name} width={360} height={360} loading="lazy" />
+        ) : (
+          <span className="topper-initials" aria-hidden>
+            {t.name
+              .split(' ')
+              .map((w) => w[0])
+              .join('')}
+          </span>
+        )}
+        {rank <= 3 && <span className="topper-rank">#{rank}</span>}
+      </div>
+      <h3>{t.name}</h3>
+      <p className="topper-score">
+        {t.score}
+        <small>{t.scoreNote}</small>
+      </p>
+      {(t.maths || t.science) && (
+        <ul className="topper-marks">
+          {t.maths && <li className={t.maths === 100 ? 'perfect' : ''}>Maths {t.maths}/100</li>}
+          {t.science && <li>Science {t.science}/100</li>}
+        </ul>
+      )}
+    </article>
+  )
+}
+
+const RESULT_TABS = ['2025 Toppers', '2024 Toppers', 'JNV & Sainik'] as const
+
 function Results() {
+  const [tab, setTab] = useState<(typeof RESULT_TABS)[number]>('2025 Toppers')
+  const toppers = tab === '2025 Toppers' ? TOPPERS_2025 : TOPPERS_2024
+
   return (
     <section className="section alt" id="results">
       <div className="wrap">
-        <p className="eyebrow">Our results</p>
-        <h2>Congratulations, Class 10th 2024 batch</h2>
-        <div className="results">
-          {RESULTS.map((r) => (
-            <div className="result" key={r.name}>
-              <span className="avatar" aria-hidden>
-                {r.name
-                  .split(' ')
-                  .map((w) => w[0])
-                  .join('')}
-              </span>
-              <h4>{r.name}</h4>
-              <p className="score">{r.score}</p>
-              {r.maths && <p className="maths">Maths {r.maths}</p>}
-            </div>
-          ))}
+        <div className="results-head">
+          <div>
+            <p className="eyebrow">Our results</p>
+            <h2>Congratulations to our achievers</h2>
+          </div>
+          <div className="tabs" role="tablist" aria-label="Results">
+            {RESULT_TABS.map((t) => (
+              <button
+                key={t}
+                type="button"
+                role="tab"
+                aria-selected={tab === t}
+                className={tab === t ? 'active' : ''}
+                onClick={() => setTab(t)}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {tab === 'JNV & Sainik' ? (
+          <div className="selections" key={tab}>
+            {SELECTIONS.map((s) => (
+              <article className="selection" key={s.name}>
+                <img src={s.photo} alt={s.name} loading="lazy" />
+                <div>
+                  <h3>{s.name}</h3>
+                  <p>JNV / Sainik selected</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className={`toppers cols-${toppers.length % 4 === 0 ? 4 : 3}`} key={tab}>
+            {toppers.map((t, i) => (
+              <TopperCard t={t} rank={i + 1} key={t.name} />
+            ))}
+          </div>
+        )}
+
+        <figure className="celebration">
+          <img src={group2024} alt="Our toppers with their medals" loading="lazy" />
+          <figcaption>
+            <b>Celebrating our toppers</b>
+            <span>Your success is our mission.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )
+}
+
+function Scholarship() {
+  return (
+    <section className="scholarship" id="scholarship">
+      <div className="wrap">
+        <div className="chalkboard">
+          <div className="chalk-text">
+            <p className="chalk-eyebrow">Education Point Classes</p>
+            <h2 className="chalk-title">Scholarship Test</h2>
+            <span className="chalk-line" aria-hidden />
+            <p>
+              Talented students deserve a head start. Appear for our scholarship test and earn a
+              scholarship on your coaching fees.
+            </p>
+            <a
+              className="btn btn-apply"
+              href={whatsappLink('Hello Mahto Sir, I want to apply for the Education Point Classes scholarship test.')}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Apply now →
+            </a>
+          </div>
+          <svg className="chalk-sheet" viewBox="0 0 220 260" aria-hidden>
+            <rect x="18" y="14" width="184" height="232" rx="10" fill="#fff" />
+            <rect x="60" y="34" width="100" height="14" rx="4" fill="#e2323b" />
+            <rect x="40" y="62" width="140" height="6" rx="3" fill="#c9cbe0" />
+            <rect x="40" y="76" width="110" height="6" rx="3" fill="#c9cbe0" />
+            {Array.from({ length: 6 }).map((_, r) =>
+              Array.from({ length: 5 }).map((_, c) => (
+                <circle
+                  key={`${r}-${c}`}
+                  cx={52 + c * 28}
+                  cy={108 + r * 22}
+                  r="7"
+                  fill={(r * 3 + c * 2) % 5 === 1 ? '#2b2d7c' : 'none'}
+                  stroke="#2b2d7c"
+                  strokeWidth="2"
+                />
+              )),
+            )}
+          </svg>
         </div>
       </div>
     </section>
@@ -735,6 +991,10 @@ function Contact() {
             <dd>
               <a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a>
             </dd>
+            <dt>Email</dt>
+            <dd>
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            </dd>
             <dt>Address</dt>
             <dd>
               <a href={MAP_URL} target="_blank" rel="noreferrer">
@@ -787,7 +1047,7 @@ function Footer() {
       <div className="wrap footer-grid">
         <div>
           <div className="brand">
-            <img src={logo} alt="" width={46} height={46} />
+            <img src={logo} alt="Education Point Classes logo" width={50} height={55} />
             <span>
               <strong>Education Point Classes</strong>
               <small>Your Success Is Our Mission</small>
@@ -816,6 +1076,7 @@ function Footer() {
         <div>
           <h4>Contact</h4>
           <a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a>
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           <p>{ADDRESS}</p>
           <SocialLinks />
         </div>
@@ -829,10 +1090,14 @@ function Footer() {
 const REVEAL_SELECTOR = [
   '.section .eyebrow',
   '.section h2',
-  '.about-grid > *',
-  '.sub-title',
+  '.stat',
+  '.welcome > *',
+  '.value',
   '.card',
-  '.result',
+  '.topper',
+  '.selection',
+  '.celebration',
+  '.chalkboard',
   '.commerce-row > *',
   '.rms-banner',
   '.faq details',
@@ -881,12 +1146,14 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <Stats />
         <About />
         <Courses />
         <CommerceBanner />
         <Results />
         <RmsCet />
         <WhyUs />
+        <Scholarship />
         <Faq />
         <Contact />
       </main>
