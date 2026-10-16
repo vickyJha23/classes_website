@@ -183,8 +183,7 @@ const SELECTIONS = [
 
 const COMMERCE_REASONS = ['Result-oriented teaching', 'Experienced teachers', 'Regular tests', 'Personal attention']
 
-// Paste the YouTube channel link here (e.g. 'https://www.youtube.com/@yourchannel')
-const YOUTUBE_URL = ''
+const YOUTUBE_URL = 'https://www.youtube.com/channel/UCN_L6knFJJd1QCe8gmfT_aw'
 const INSTAGRAM_URL = 'https://www.instagram.com/mahtosir00/'
 
 type SocialName = 'whatsapp' | 'instagram' | 'youtube'
