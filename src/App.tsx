@@ -423,6 +423,7 @@ function Hero() {
           </p>
           <h1>
             Admission <span>Open</span>
+            <span className="sr-only"> at Education Point Classes, Silvassa</span>
           </h1>
           <p className="hero-classes">
             Class <b>5th</b> to <b>12th</b>
@@ -503,7 +504,7 @@ function About() {
         <div className="welcome">
           <figure className="welcome-photo">
             <div className="welcome-frame">
-              <img src={mahtoSir} alt="Mahto Sir" width={760} height={1004} loading="lazy" />
+              <img src={mahtoSir} alt="Mahto Sir, mentor at Education Point Classes, Silvassa" width={760} height={1004} loading="lazy" />
             </div>
             <figcaption>
               <b>Mahto Sir</b>
@@ -616,7 +617,7 @@ function TopperCard({ t, rank }: { t: Topper; rank: number }) {
     <article className="topper">
       <div className="topper-photo">
         {t.photo ? (
-          <img src={t.photo} alt={t.name} width={360} height={360} loading="lazy" />
+          <img src={t.photo} alt={`${t.name}, Class 10th topper`} width={360} height={360} loading="lazy" />
         ) : (
           <span className="topper-initials" aria-hidden>
             {t.name
@@ -676,7 +677,7 @@ function Results() {
           <div className="selections" key={tab}>
             {SELECTIONS.map((s) => (
               <article className="selection" key={s.name}>
-                <img src={s.photo} alt={s.name} loading="lazy" />
+                <img src={s.photo} alt={`${s.name}, selected for JNV / Sainik School`} loading="lazy" />
                 <div>
                   <h3>{s.name}</h3>
                   <p>JNV / Sainik selected</p>
@@ -693,7 +694,7 @@ function Results() {
         )}
 
         <figure className="celebration">
-          <img src={group2024} alt="Our toppers with their medals" loading="lazy" />
+          <img src={group2024} alt="Education Point Classes toppers with their medals" loading="lazy" />
           <figcaption>
             <b>Celebrating our toppers</b>
             <span>Your success is our mission.</span>
@@ -940,9 +941,20 @@ function WhyUs() {
   )
 }
 
+const FAQ_SCHEMA = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+})
+
 function Faq() {
   return (
     <section className="section" id="faq">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: FAQ_SCHEMA }} />
       <div className="wrap narrow">
         <p className="eyebrow">FAQ</p>
         <h2>Frequently asked questions</h2>
