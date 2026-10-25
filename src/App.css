@@ -317,6 +317,66 @@ h4 {
   background: var(--sun);
 }
 
+/* "Watch campus tour" button and its video popup */
+.btn-tour {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 8px 18px 8px 8px;
+  border-color: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: inherit;
+}
+.btn-tour:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}
+.tour-play {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--red);
+  padding-left: 2px;
+}
+.tour-dialog {
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: #000;
+  overflow: visible;
+}
+.tour-dialog::backdrop {
+  background: rgba(8, 12, 40, 0.85);
+}
+.tour-dialog video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: #000;
+}
+.tour-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--navy);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 /* Right side: yellow panel with the student, like the poster */
 .hero-visual {
   position: relative;
@@ -1502,6 +1562,9 @@ span.social {
 }
 .hero-copy > :nth-child(6) {
   animation-delay: 0.65s;
+}
+.hero-copy > :nth-child(7) {
+  animation-delay: 0.75s;
 }
 .hero-panel {
   animation: slide-in-right 1s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;

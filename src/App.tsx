@@ -408,10 +408,53 @@ function HeroVideo() {
   )
 }
 
+// The full campus tour (about 3 minutes, with sound) opens in a popup. The video
+// only starts downloading once a visitor clicks, so it doesn't slow the page down.
+function CampusTour() {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const open = () => {
+    dialogRef.current?.showModal()
+    videoRef.current?.play().catch(() => {})
+  }
+  const close = () => dialogRef.current?.close()
+
+  return (
+    <>
+      <button type="button" className="btn btn-tour" onClick={open}>
+        <span className="tour-play" aria-hidden>
+          <svg viewBox="0 0 24 24" width="14" height="14">
+            <path d="M8 5v14l11-7z" fill="currentColor" />
+          </svg>
+        </span>
+        Watch campus tour
+      </button>
+      <dialog
+        ref={dialogRef}
+        className="tour-dialog"
+        aria-label="Education Point Classes campus tour"
+        onClose={() => videoRef.current?.pause()}
+        onClick={(e) => {
+          // Clicking the dark backdrop (outside the video) closes the popup
+          if (e.target === e.currentTarget) close()
+        }}
+      >
+        <button type="button" className="tour-close" onClick={close} aria-label="Close video">
+          ×
+        </button>
+        <video ref={videoRef} controls playsInline preload="none" poster="/campus-tour-poster.jpg">
+          <source src="/campus-tour.mp4" type="video/mp4" />
+        </video>
+      </dialog>
+    </>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero" id="top">
-      {/* Background video: "Classroom with children raising their hands" from mixkit.co (free licence) */}
+      {/* Background video: a short silent loop cut from our campus tour video */}
       <HeroVideo />
       <div className="hero-overlay" aria-hidden />
       <div className="hero-bg" aria-hidden />
@@ -449,6 +492,7 @@ function Hero() {
               Call now: {PHONE_DISPLAY}
             </a>
           </div>
+          <CampusTour />
         </div>
 
         <div className="hero-visual">
