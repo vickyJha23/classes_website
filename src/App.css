@@ -26,6 +26,16 @@
 .btn-red:hover {
   background: var(--red-deep);
 }
+/* Call buttons: phone icon + number */
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.phone-icon {
+  flex-shrink: 0;
+}
 .btn-outline {
   border-color: var(--navy);
   color: var(--navy);

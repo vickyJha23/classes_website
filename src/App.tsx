@@ -126,7 +126,7 @@ const FAQS = [
   },
   {
     q: 'What is the RMS CET 2026 schedule?',
-    a: 'Applications are open from 23 September to 20 October 2026 on the official NTA website, and the exam is on 13 December 2026.',
+    a: 'Applications were open from 23 September to 20 October 2026 on the official NTA website and have now closed. The exam is on 13 December 2026.',
   },
   {
     q: 'How do I apply for the scholarship test?',
@@ -213,6 +213,17 @@ function courseId(title: string) {
 
 function whatsappLink(text: string) {
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`
+}
+
+function PhoneIcon() {
+  return (
+    <svg className="phone-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+      <path
+        d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2z"
+        fill="currentColor"
+      />
+    </svg>
+  )
 }
 
 function Check() {
@@ -347,8 +358,9 @@ function Header() {
               </a>
             ),
           )}
-          <a className="btn btn-red" href={`tel:${PHONE_TEL}`}>
-            Call {PHONE_DISPLAY}
+          <a className="btn btn-red btn-call" href={`tel:${PHONE_TEL}`} aria-label={`Call ${PHONE_DISPLAY}`}>
+            <PhoneIcon />
+            {PHONE_DISPLAY}
           </a>
         </nav>
       </div>
@@ -564,8 +576,9 @@ function Admission() {
             >
               Book a free demo class
             </a>
-            <a className="btn btn-light" href={`tel:${PHONE_TEL}`}>
-              Call now: {PHONE_DISPLAY}
+            <a className="btn btn-light btn-call" href={`tel:${PHONE_TEL}`} aria-label={`Call ${PHONE_DISPLAY}`}>
+              <PhoneIcon />
+              {PHONE_DISPLAY}
             </a>
           </div>
           <CampusTour />
@@ -910,7 +923,7 @@ function RmsCet() {
             <img src={cadets} alt="" loading="lazy" width={328} height={850} />
           </div>
           <p className="rms-sticker">
-            Application <span>open now</span>
+            Exam on <span>13 Dec</span>
           </p>
 
           <div className="rms-main">
@@ -934,8 +947,8 @@ function RmsCet() {
                     <CalendarIcon />
                   </span>
                   <div>
-                    <p>Application dates</p>
-                    <b className="rms-red">23 Sep – 20 Oct 2026</b>
+                    <p>Applications closed</p>
+                    <b className="rms-red">Ended 20 Oct 2026</b>
                   </div>
                 </div>
                 <div className="rms-tile">
@@ -943,7 +956,7 @@ function RmsCet() {
                     <FormIcon />
                   </span>
                   <div>
-                    <p>Apply online · Official website (NTA)</p>
+                    <p>Admit card &amp; updates · Official website (NTA)</p>
                     <a className="rms-green" href={RMS_APPLY_URL} target="_blank" rel="noreferrer">
                       exams.nta.nic.in/rmscet ↗
                     </a>
@@ -1278,7 +1291,7 @@ export default function App() {
   return (
     <>
       <div className="notice-bar">
-        <a href="#rms-cet">RMS CET 2026 applications open: 23 Sep – 20 Oct 2026 →</a>
+        <a href="#rms-cet">RMS CET 2026 exam on 13 Dec 2026 · Join our preparation batch →</a>
       </div>
       <Header />
       <main>
