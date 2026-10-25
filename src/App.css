@@ -180,6 +180,13 @@ h4 {
     linear-gradient(160deg, #1d3db0 0%, #142578 55%, #0d1654 100%);
   padding: clamp(48px, 7vw, 84px) 0 clamp(56px, 7vw, 90px);
 }
+/* Top of the page: the campus video on its own, as a wide banner */
+.video-hero {
+  position: relative;
+  overflow: hidden;
+  height: clamp(220px, 30vw, 600px);
+  background: #0d1654 url('/campus-tour-poster.jpg') center / cover no-repeat;
+}
 .hero-video {
   position: absolute;
   inset: 0;
@@ -187,14 +194,49 @@ h4 {
   height: 100%;
   object-fit: cover;
 }
-/* Blue tint over the video so the text stays readable */
-.hero-overlay {
+/* Small round pause / play button in the middle of the video */
+.video-toggle {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(20, 37, 120, 0.94) 0%, rgba(20, 37, 120, 0.82) 50%, rgba(13, 22, 84, 0.62) 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.video-toggle:hover,
+.video-sound:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+/* Sound on / off, bottom-right corner of the video */
+.video-sound {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-video {
+  .hero-video,
+  .video-toggle,
+  .video-sound {
     display: none;
   }
 }
@@ -364,17 +406,24 @@ h4 {
 }
 .tour-close {
   position: absolute;
-  top: -44px;
-  right: 0;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
   width: 36px;
   height: 36px;
+  padding: 0;
   border: 0;
   border-radius: 50%;
-  background: #fff;
-  color: var(--navy);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+}
+.tour-close:hover {
+  background: var(--red);
 }
 
 /* Right side: yellow panel with the student, like the poster */
@@ -1117,6 +1166,23 @@ h4 {
   font-size: 0.85rem;
   color: #8d90bf;
 }
+/* Small, low-key developer credit under the copyright */
+.dev-credit {
+  padding: 0 var(--gutter) 16px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #6a6d9c;
+}
+.footer .dev-credit a {
+  display: inline;
+  padding: 0;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer .dev-credit a:hover {
+  color: #c8cbf0;
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
@@ -1562,9 +1628,6 @@ span.social {
 }
 .hero-copy > :nth-child(6) {
   animation-delay: 0.65s;
-}
-.hero-copy > :nth-child(7) {
-  animation-delay: 0.75s;
 }
 .hero-panel {
   animation: slide-in-right 1s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
