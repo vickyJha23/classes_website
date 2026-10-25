@@ -184,18 +184,17 @@ h4 {
 .video-hero {
   position: relative;
   overflow: hidden;
-  /* Fill the screen below the header (announcement bar + menu ≈ 114px) */
-  height: calc(100vh - 114px);
-  height: calc(100svh - 114px);
-  min-height: 320px;
-  background: #0d1654 url('/campus-tour-poster.jpg') center / cover no-repeat;
+  /* Same shape as the video (16:9) so the whole frame shows, nothing cropped */
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000 url('/campus-tour-poster.jpg') center / contain no-repeat;
 }
 .hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 /* Small round pause / play button in the middle of the video */
 .video-toggle {
@@ -235,6 +234,18 @@ h4 {
   color: #fff;
   cursor: pointer;
   transition: background 0.2s;
+}
+@media (max-width: 600px) {
+  .video-sound {
+    left: 8px;
+    bottom: 8px;
+    width: 30px;
+    height: 30px;
+  }
+  .video-toggle {
+    width: 42px;
+    height: 42px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-video,
