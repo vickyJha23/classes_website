@@ -1,0 +1,58 @@
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .cards.three {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+/* The menu collapses earlier than the rest: seven links need a wide screen */
+@media (max-width: 1240px) {
+  .menu-btn {
+    display: block;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px var(--gutter) 18px;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a:not(.btn) {
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .btn {
+    margin: 12px 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .cards.three,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .actions .btn {
+    flex: 1 1 100%;
+  }
+  .brand strong {
+    font-size: 1rem;
+  }
+}

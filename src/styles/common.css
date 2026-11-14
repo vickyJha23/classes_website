@@ -1,0 +1,94 @@
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.narrow {
+  max-width: 820px;
+}
+
+/* ---------- Buttons & text ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+.btn-red {
+  background: var(--red);
+  color: #fff;
+}
+.btn-red:hover {
+  background: var(--red-deep);
+}
+/* Call buttons: phone icon + number */
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.phone-icon {
+  flex-shrink: 0;
+}
+.btn-outline {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: #fff;
+}
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 18px;
+}
+h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy-ink);
+}
+.section p + p {
+  margin-top: 14px;
+}
+.section p {
+  color: var(--ink-soft);
+}
+.section b {
+  color: var(--ink);
+}
+
+.section {
+  padding: clamp(56px, 8vw, 88px) 0;
+}
+.section.alt {
+  background: var(--paper-2);
+}

@@ -1,0 +1,113 @@
+/* ================================================================== */
+/* Welcome message + values                                            */
+/* ================================================================== */
+.welcome {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+.welcome-photo {
+  margin: 0;
+  position: relative;
+}
+.welcome-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, #eef0fb, #ffffff 60%);
+}
+.welcome-frame::before {
+  content: '';
+  position: absolute;
+  inset: auto -20% -30% -20%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, rgba(226, 50, 59, 0.18), transparent 70%);
+}
+.welcome-frame img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  mix-blend-mode: multiply;
+}
+.welcome-photo figcaption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: rgba(14, 15, 51, 0.88);
+  backdrop-filter: blur(8px);
+  color: #fff;
+}
+.section .welcome-photo figcaption b {
+  font-size: 1.15rem;
+  color: #fff;
+}
+.welcome-photo figcaption span {
+  font-size: 0.85rem;
+  color: var(--sun);
+}
+.accent-text {
+  color: var(--red);
+}
+.signature {
+  margin-top: 20px !important;
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy) !important;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: clamp(48px, 7vw, 80px);
+}
+.value {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 28px;
+  border-radius: 20px;
+  background: var(--paper-2);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.value::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 18px solid rgba(43, 45, 124, 0.06);
+}
+.value-num {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: 0.1em;
+}
+.value h3 {
+  margin: 10px 0 10px;
+  font-size: 1.4rem;
+}
+.value:hover {
+  transform: translateY(-6px);
+  background: var(--navy);
+}
+.value:hover h3,
+.value:hover p {
+  color: #fff;
+}
+.value:hover .value-num {
+  color: var(--sun);
+}

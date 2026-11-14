@@ -1,0 +1,208 @@
+/* ================================================================== */
+/* Entrance Exams page                                                 */
+/* ================================================================== */
+.exams-hero h1 {
+  font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+}
+.exams-hero h1 span:not(.sr-only) {
+  display: inline;
+}
+.exams-lead {
+  max-width: 620px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #dfe3ff;
+}
+.exams-hero .hero-chips a {
+  text-decoration: none;
+}
+.exams-hero .hero-chips a:hover {
+  color: var(--sun);
+}
+#class-6,
+#aissee,
+#agniveer {
+  scroll-margin-top: 20px;
+}
+
+/* Class 6th exam list */
+.exam-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.exam-card {
+  padding: 26px;
+  border-radius: 20px;
+  background: var(--paper-2);
+  border-top: 5px solid var(--navy);
+}
+.exam-card:nth-child(2) {
+  border-top-color: var(--red);
+}
+.exam-card:nth-child(3) {
+  border-top-color: var(--sun);
+}
+.exam-card:nth-child(4) {
+  border-top-color: var(--sky);
+}
+.exam-card:nth-child(5) {
+  border-top-color: var(--plum);
+}
+.exam-card h3 {
+  margin-top: 8px;
+  font-size: 1.6rem;
+}
+.section .exam-name {
+  margin: 4px 0 10px;
+  font-weight: 700;
+  color: var(--red);
+}
+
+/* AISSEE */
+.aissee-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.aissee-grid h3 {
+  margin-bottom: 16px;
+}
+.aissee-apply {
+  grid-column: 1 / -1;
+}
+.date-list {
+  margin: 0;
+}
+.date-list div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.date-list dt {
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.date-list dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+.date-list small {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--red);
+}
+.aissee-classes .rms-class h4 {
+  padding: 10px 6px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+.aissee-classes .rms-class.blue h4 {
+  background: linear-gradient(180deg, #2449c9, #15297d);
+}
+.aissee-classes .rms-class.green h4 {
+  background: linear-gradient(180deg, #1f7a45, #0f4a28);
+}
+.aissee-classes .rms-class small {
+  display: block;
+  padding: 0 6px;
+}
+.steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 600;
+  counter-increment: step;
+}
+.steps li::before {
+  content: counter(step);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* Agniveer */
+.agniveer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+.agniveer-poster {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 24px 50px -24px rgba(22, 23, 74, 0.5);
+}
+.section .agniveer-target {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: var(--sun);
+  color: var(--navy-ink);
+  font-weight: 700;
+}
+.subject-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.subject-chips li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.agniveer-grid .list li {
+  align-items: flex-start;
+}
+.agniveer-grid .list a {
+  text-decoration: none;
+}
+.agniveer-grid .list a:hover {
+  color: var(--red);
+}
+
+@media (max-width: 960px) {
+  .exam-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .agniveer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .exam-cards,
+  .aissee-grid {
+    grid-template-columns: 1fr;
+  }
+}

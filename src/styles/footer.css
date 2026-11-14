@@ -1,0 +1,59 @@
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--navy-ink);
+  color: #c8cbf0;
+  padding-top: 56px;
+  font-size: 0.93rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr;
+  gap: 32px;
+}
+.footer h4 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+.footer a {
+  display: block;
+  padding: 3px 0;
+  color: #c8cbf0;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: var(--sun);
+}
+.footer .brand strong {
+  color: #fff;
+}
+.footer .brand small {
+  color: var(--sun);
+}
+.footer-about {
+  margin-top: 14px;
+}
+.copyright {
+  margin-top: 40px;
+  padding: 18px var(--gutter);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8d90bf;
+}
+/* Small, low-key developer credit under the copyright */
+.dev-credit {
+  padding: 0 var(--gutter) 16px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #6a6d9c;
+}
+.footer .dev-credit a {
+  display: inline;
+  padding: 0;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer .dev-credit a:hover {
+  color: #c8cbf0;
+}

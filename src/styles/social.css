@@ -1,0 +1,93 @@
+/* ---------- Social links ---------- */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+.social-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+.social-icon svg {
+  width: 22px;
+  height: 22px;
+}
+a.social:hover .social-icon {
+  transform: translateY(-3px);
+}
+span.social {
+  opacity: 0.55;
+}
+.whatsapp .social-icon {
+  background: #25d366;
+}
+.instagram .social-icon {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+.youtube .social-icon {
+  background: #ff0000;
+}
+.with-handle {
+  flex-direction: column;
+  gap: 12px;
+}
+.social-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.social-text b {
+  font-size: 0.95rem;
+}
+.social-text small {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.contact-list .social-text b {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-ink);
+}
+.footer .social-links {
+  margin-top: 14px;
+}
+.footer a.social {
+  padding: 0;
+}
+
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease;
+}
+.wa-float:hover {
+  transform: scale(1.08);
+}
+.wa-float svg {
+  width: 32px;
+  height: 32px;
+}

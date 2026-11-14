@@ -1,0 +1,89 @@
+/* ---------- Cards ---------- */
+.cards {
+  display: grid;
+  gap: 20px;
+}
+.cards.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+.card {
+  padding: 26px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.card h4 {
+  margin-bottom: 6px;
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Courses */
+.course {
+  display: flex;
+  flex-direction: column;
+  border-top: 5px solid var(--navy);
+}
+.course:nth-child(2) {
+  border-top-color: var(--red);
+}
+.course:nth-child(3) {
+  border-top-color: var(--sun);
+}
+.level {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--red) !important;
+}
+.course h3 {
+  margin: 4px 0 10px;
+}
+.list {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 22px;
+}
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.check {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  padding: 3px;
+  border-radius: 50%;
+  background: #e5f6ec;
+  color: #1f9d55;
+}
+.know-more {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+}
+.know-more:hover {
+  color: var(--red);
+}
+
+/* Why us */
+.why {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.why .check {
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  margin-top: 2px;
+}

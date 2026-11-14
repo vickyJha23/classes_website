@@ -1,0 +1,90 @@
+/* ---------- Notice bar & header ---------- */
+.notice-bar {
+  background: var(--navy);
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.notice-bar a {
+  display: block;
+  padding: 9px 16px;
+  color: #fff;
+  text-decoration: none;
+}
+.notice-bar a:hover {
+  color: var(--sun);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+}
+.brand {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.brand img {
+  width: auto;
+  height: 54px;
+  flex: none;
+}
+.brand span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.brand strong {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+.brand small {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--red);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav a:not(.btn) {
+  padding: 8px 7px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav a:not(.btn):hover {
+  color: var(--red);
+}
+.nav .btn {
+  margin-left: 8px;
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+.menu-btn {
+  display: none;
+  padding: 8px 14px;
+  border: 2px solid var(--navy);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 700;
+  cursor: pointer;
+}

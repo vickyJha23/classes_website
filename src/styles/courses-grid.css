@@ -1,0 +1,13 @@
+/* ================================================================== */
+/* Courses: 2x2 grid                                                   */
+/* ================================================================== */
+.cards.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+.course:nth-child(4) {
+  border-top-color: var(--sky);
+}
+.tone-3 .dropdown-icon {
+  background: #e3f3fb;
+  color: var(--sky);
+}

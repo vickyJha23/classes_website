@@ -1,0 +1,72 @@
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.contact-list {
+  margin: 24px 0 0;
+}
+.contact-list dt {
+  margin-top: 18px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.contact-list dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+  color: var(--navy-ink);
+}
+.contact-list a {
+  text-decoration: none;
+}
+.contact-list a:hover {
+  color: var(--red);
+}
+.contact-list dd:first-of-type a {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  resize: vertical;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--navy);
+}
+.form .btn {
+  width: 100%;
+  margin-top: 4px;
+}

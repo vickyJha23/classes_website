@@ -1,0 +1,35 @@
+/* ---------- FAQ ---------- */
+.faq {
+  display: grid;
+  gap: 10px;
+}
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.faq summary {
+  padding: 16px 20px;
+  font-weight: 700;
+  color: var(--navy-ink);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--red);
+}
+.faq details[open] summary::after {
+  content: '−';
+}
+.faq details p {
+  padding: 0 20px 18px;
+}

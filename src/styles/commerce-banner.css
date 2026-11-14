@@ -1,0 +1,48 @@
+/* ---------- Commerce banner ---------- */
+.btn-sun {
+  background: var(--sun);
+  color: var(--navy-ink);
+}
+.btn-sun:hover {
+  background: #ffd866;
+}
+.commerce-banner {
+  background: var(--red);
+  color: #fff;
+  padding: 44px 0;
+}
+.commerce-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.commerce-for {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--red);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.commerce-banner h2 {
+  margin: 12px 0 16px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.commerce-banner ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+.commerce-banner li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.commerce-banner .check {
+  background: #fff;
+}

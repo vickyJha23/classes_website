@@ -1,0 +1,341 @@
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(900px 500px at 15% 0%, #2f5be0 0%, transparent 60%),
+    radial-gradient(700px 500px at 100% 100%, #1a2a8f 0%, transparent 60%),
+    linear-gradient(160deg, #1d3db0 0%, #142578 55%, #0d1654 100%);
+  padding: clamp(48px, 7vw, 84px) 0 clamp(56px, 7vw, 90px);
+}
+/* Top of the page: the campus video on its own, as a wide banner */
+.video-hero {
+  position: relative;
+  overflow: hidden;
+  /* Same shape as the video (16:9) so the whole frame shows, nothing cropped */
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000 url('/campus-tour-poster.jpg') center / contain no-repeat;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* Small round pause / play button in the middle of the video */
+.video-toggle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.video-toggle:hover,
+.video-sound:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+/* Sound on / off, bottom-left corner (the WhatsApp button sits bottom-right) */
+.video-sound {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+@media (max-width: 600px) {
+  .video-sound {
+    left: 8px;
+    bottom: 8px;
+    width: 30px;
+    height: 30px;
+  }
+  .video-toggle {
+    width: 42px;
+    height: 42px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video,
+  .video-toggle,
+  .video-sound {
+    display: none;
+  }
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(110deg, #000 0%, transparent 55%);
+  -webkit-mask-image: linear-gradient(110deg, #000 0%, transparent 55%);
+}
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 0 4px rgba(61, 220, 132, 0.25);
+}
+
+.hero h1 {
+  margin-top: 20px;
+  font-size: clamp(2.8rem, 7.5vw, 5.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fff3a6 0%, #ffd23a 45%, #ff9f1a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 0 rgba(120, 40, 0, 0.35));
+}
+.hero h1 span {
+  display: block;
+}
+
+.hero-classes {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 26px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy-ink);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+}
+.hero-classes b {
+  color: var(--red);
+}
+
+.hero-commerce {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.hero-commerce strong {
+  padding: 6px 18px;
+  border-radius: 10px;
+  border: 2px dashed var(--navy-ink);
+  outline: 4px solid var(--sun);
+  background: var(--sun);
+  color: var(--navy-ink);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.hero-commerce span {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--red);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.hero-chips li {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(13, 22, 84, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.btn-light {
+  background: #fff;
+  color: var(--navy);
+}
+.btn-light:hover {
+  background: var(--sun);
+}
+
+/* "Watch campus tour" button and its video popup */
+.btn-tour {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 8px 18px 8px 8px;
+  border-color: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: inherit;
+}
+.btn-tour:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}
+.tour-play {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--red);
+  padding-left: 2px;
+}
+.tour-dialog {
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: #000;
+  overflow: visible;
+}
+.tour-dialog::backdrop {
+  background: rgba(8, 12, 40, 0.85);
+}
+.tour-dialog video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: #000;
+}
+.tour-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.tour-close:hover {
+  background: var(--red);
+}
+
+/* Right side: yellow panel with the student, like the poster */
+.hero-visual {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 400px;
+}
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  /* sampled from the photo's own yellow so the two blend */
+  background: linear-gradient(180deg, #fde50b 0%, #fdd600 45%, #f0c800 100%);
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
+  aspect-ratio: 4 / 5;
+}
+.hero-panel img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  /* fade out the poster's blue strip on the photo's left edge */
+  mask-image: linear-gradient(90deg, transparent 6%, #000 30%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 6%, #000 30%);
+}
+.hero-script {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 1;
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--red-deep);
+  transform: rotate(-6deg);
+}
+.hero-why {
+  position: absolute;
+  left: -40px;
+  bottom: 28px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--navy-ink);
+  border: 2px solid var(--sun);
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.6);
+}
+.hero-why p {
+  font-weight: 800;
+  color: var(--sun);
+  margin-bottom: 8px;
+}
+.hero-why ul {
+  display: grid;
+  gap: 6px;
+}
+.hero-why li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.hero-why .check {
+  width: 18px;
+  height: 18px;
+  background: var(--sun);
+  color: var(--navy-ink);
+}
